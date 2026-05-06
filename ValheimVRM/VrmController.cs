@@ -50,7 +50,7 @@ namespace ValheimVRM
 
         class SpringBoneState
         {
-	        public VRMSpringBone SpringBone;
+	        public UniVRM10.VRM10SpringBone SpringBone;
 	        public Vector3 InitialGravityForce;
         }
 
