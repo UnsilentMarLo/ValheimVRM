@@ -1,0 +1,13 @@
+<<<<<<< SEARCH
+        class SpringBoneState
+        {
+	        public VRMSpringBone SpringBone;
+	        public Vector3 InitialGravityForce;
+        }
+=======
+        class SpringBoneState
+        {
+	        public UniVRM10.VRM10SpringBone SpringBone;
+	        public Vector3 InitialGravityForce;
+        }
+>>>>>>> REPLACE

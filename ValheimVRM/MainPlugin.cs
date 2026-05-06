@@ -23,9 +23,11 @@ namespace ValheimVRM
         public const string PluginVersion = "1.3.11.0";
         
         private static Harmony _harmony = new Harmony("com.yoship1639.plugins.valheimvrm.patch");
+        public static BepInEx.Configuration.ConfigEntry<KeyCode> EditorHotkey;
 
         void Awake()
         {
+            EditorHotkey = Config.Bind("General", "EditorHotkey", KeyCode.F6, "The hotkey to open the in-game settings editor.");
             
 // #if DEBUG
 //             int attempts = 0;
