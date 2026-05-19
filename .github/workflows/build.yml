@@ -1,0 +1,42 @@
+name: Build and Release
+
+on:
+  push:
+    branches:
+      - main
+    tags:
+      - "v*"
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'
+
+    - name: Download BepInEx and Valheim Stubs
+      run: |
+        # Download publicized/stub assemblies for Valheim and BepInEx from Thunderstore or similar
+        # Since we don't have explicit URLs, this is a placeholder step for the actual game DLLs.
+        echo "Placeholder for downloading Valheim assemblies"
+
+    - name: Build
+      run: |
+        # You'll need to define VALHEIM_INSTALL and UNIVRM_UNITY_LIBS environment variables
+        # pointing to the downloaded stubs.
+        export VALHEIM_INSTALL="${{ github.workspace }}/valheim"
+        export UNIVRM_UNITY_LIBS="${{ github.workspace }}/univrm"
+        dotnet build ValheimVRM/ValheimVRM.csproj --configuration Release
+
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: ValheimVRM
+        path: release/
